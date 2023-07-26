@@ -7,6 +7,6 @@ import LandingPage from './components/LandingPage.vue';
 <LandingPage/>
 </template>
 
-<style src="./App.css">
+<style  src="./App.css">
 </style>
 

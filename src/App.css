@@ -1,6 +1,5 @@
 *{
-    padding:0;
-    margin:0;
+    
     box-sizing: border-box;
     font-family: "Red Hat Display",
     RedHatDisplay,
@@ -8,4 +7,9 @@
     Overpass,
     Arial,
     sans-serif;
+}
+
+body{
+    padding:0;
+    margin:0;
 }
