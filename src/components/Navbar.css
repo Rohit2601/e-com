@@ -1,127 +1,91 @@
 .navbar {
-   border:1px solid rgb(160, 158, 158);
-    width:100%;
-    height:14vh;
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-    padding:0 12px;
+  max-width: 100%;
+  height: 14vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 12px;
+  border: 1px solid black;
 }
 
-.navbar-img{
-    height:100%;
-   width:8%;
-
-
+.navbar-img {
+  height: 80%;
+  width: 8%;
 }
 
-.navbar-img-logo{
-    width:100%;
-    height:100%;
+.navbar-img-logo {
+  width: 100%;
+  height: 100%;
 }
 
+.navbar-username {
+  width: 4%;
 
-.navbar-username{
-   
-    width:4%;  
-    padding:8px;
-    margin-left: 12px;
-    padding-left:10px;
-    font-size:1rem;
-    
-
+  margin-left: 12px;
+  padding-left: 10px;
+  font-size: 1rem;
 }
 
-.navbar-searchbox{
-  
-    width:60%;
-    
-   text-align: center;
-  margin:auto;
+.navbar-searchbox {
+  width: 60%;
 
+  text-align: center;
+  margin: auto;
 }
 
-.navbar-searchbox-input{
-  
-   width:70%;
-   height:2.5rem;
-   border:1px solid black;
-   outline:none;
-   padding:12px 16px;
-   font-size: 1.2rem;
-   border-radius: 1px;
+.navbar-searchbox-input {
+  width: 70%;
+  height: 2.5rem;
+  border: 1px solid black;
+  outline: none;
+  padding: 12px 16px;
+  font-size: 1.2rem;
+  border-radius: 1px;
 }
 
-.navbar-searchbox-button{
-          
-    font-weight: bold;
-    border:1px solid #06c;
-    outline: auto;
-   
-    
-    
-
+.navbar-searchbox-button {
+  font-weight: bold;
+  border: 1px solid #06c;
+  outline: auto;
 }
 
-
-
-.navbar-select{
-    margin:auto;
-    background-color: red;
-   width:10%;
-   height:40%;
-    
-    
-    
+.navbar-select {
+  margin: auto;
+  width: 10%;
+  cursor: pointer;
 }
 
-.pfe-select{
-
-width:100%;
-height:100%;
+.pfe-select > select {
+  width: 100%;
+  padding: 10px 0;
+  border: 1px solid #06c;
+  outline: none;
+  cursor: pointer;
+  padding-left: 8px;
 }
 
-.pfe-select > select{
-    width:100%;
-    padding:10px 0;
-    border:1px solid #06c;
-    outline:none;
+.pfe-options {
+  font-size: 1rem;
 }
 
-.pfe-options{
-    font-size:1rem;
-    padding: 3px;    
-    text-align: center;
-   
+.navbar-order {
+  margin: auto;
 }
 
-
-
-
-
-
-.navbar-order{
-  
-    margin:auto;
-    
-   
-   
-   
+.navbar-cart {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 1.2rem;
+  max-height: 6%;
+}
+.navbar-cart-icon {
+  padding-top: 1rem;
 }
 
-.navbar-cart{
-   margin:12px;
-   cursor:pointer;
-   padding:4px;
-
-}
-
-
-
-
-
-.navbar-cart > p{
-    padding-top:1px;
-    font-size:1.2rem;
-    font-weight: bold;
+.navbar-cart > p {
+  font-weight: bold;
+  padding-bottom: 1rem;
 }

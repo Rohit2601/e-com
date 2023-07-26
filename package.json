@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@patternfly/pfe-button": "^1.12.3",
+    "@patternfly/pfe-card": "^1.12.3",
     "@patternfly/pfe-cta": "^1.12.3",
     "@patternfly/pfe-dropdown": "^1.12.3",
     "@patternfly/pfe-icon": "^1.12.3",
@@ -23,3 +24,5 @@
     "vite": "^4.4.5"
   }
 }
+
+

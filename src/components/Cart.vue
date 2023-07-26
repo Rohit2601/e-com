@@ -1,6 +1,6 @@
 <script>
-import "@patternfly/pfe-button";
-import "@patternfly/pfe-card";
+import "@patternfly/pfe-card/dist/pfe-card.min.js";
+import "@patternfly/pfe-button/dist/pfe-button.min.js";
 
 export default {
   name: "Cart",
