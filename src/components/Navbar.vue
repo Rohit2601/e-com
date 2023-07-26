@@ -2,6 +2,12 @@
 import "@patternfly/pfe-button/dist/pfe-button.min.js";
 import "@patternfly/pfe-dropdown/dist/pfe-dropdown.min.js";
 import "@patternfly/pfe-icon/dist/pfe-icon.min.js";
+import "@patternfly/pfe-select/dist/pfe-select.min.js";
+
+
+const categoryList = (category) => {
+  console.log(category);
+}
 
 
 </script>
@@ -35,25 +41,17 @@ import "@patternfly/pfe-icon/dist/pfe-icon.min.js";
    
     </div>
 
-    <div class="navbar-dropdown">
-        <pfe-dropdown label="Categories" class="pfe-drop">
-            <pfe-dropdown-item item-type="link" class="pfe-list">
-            <p>Mobiles</p>
-            </pfe-dropdown-item>
-            <pfe-dropdown-item item-type="link" class="pfe-list">
-                <p>Laptops</p>
-            </pfe-dropdown-item>
-            <pfe-dropdown-item item-type="link" class="pfe-list">
-                <p>Appliances</p>
-            </pfe-dropdown-item>
-            <pfe-dropdown-item item-type="link" class="pfe-list">
-                <p>Clothes</p>
-            </pfe-dropdown-item>
-            <pfe-dropdown-item item-type="link" class="pfe-list">
-                <p>Shoes</p>
-            </pfe-dropdown-item>
-          
-          </pfe-dropdown>
+    <div class="navbar-select">
+          <pfe-select  class="pfe-select">
+            <select @change="(event) => {categoryList(event.target.value)}">
+              <option value="" class="pfe-options">Categories</option>
+              <option value="laptops" class="pfe-options">Laptops</option>
+              <option value="mobiles" class="pfe-options">Mobiles</option>
+              <option value="appliances" class="pfe-options">Appliances</option>
+              <option value="clothes" class="pfe-options">Clothes</option>
+              <option value="shoes" class="pfe-options">Shoes</option>
+            </select>
+          </pfe-select>
     </div>
 
     <div class="navbar-order">

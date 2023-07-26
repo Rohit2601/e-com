@@ -23,9 +23,10 @@
 
 .navbar-username{
    
-    width:5%;  
-    padding:10px;
-    margin-left: 8px;
+    width:4%;  
+    padding:8px;
+    margin-left: 12px;
+    padding-left:10px;
     font-size:1rem;
     
 
@@ -64,34 +65,46 @@
 
 
 
-.navbar-dropdown{
+.navbar-select{
     margin:auto;
+    background-color: red;
+   width:10%;
+   height:40%;
+    
     
     
 }
 
-.pfe-drop{
-    font-size:1.2rem;
-     color:white;
-     border:1px solid black;
+.pfe-select{
+
+width:100%;
+height:100%;
 }
 
-.pfe-list{
-    padding:auto;
+.pfe-select > select{
+    width:100%;
+    padding:10px 0;
+    border:1px solid #06c;
+    outline:none;
 }
 
-.pfe-list > p{
-    
-    font-size:1.2rem;
-    
+.pfe-options{
+    font-size:1rem;
+    padding: 3px;    
+    text-align: center;
+   
 }
+
+
+
+
 
 
 .navbar-order{
   
     margin:auto;
     
-    background-color: red;
+   
    
    
 }
@@ -108,7 +121,7 @@
 
 
 .navbar-cart > p{
-    padding-top:8px;
+    padding-top:1px;
     font-size:1.2rem;
     font-weight: bold;
 }

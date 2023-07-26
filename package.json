@@ -14,6 +14,7 @@
     "@patternfly/pfe-dropdown": "^1.12.3",
     "@patternfly/pfe-icon": "^1.12.3",
     "@patternfly/pfe-navigation": "^1.12.3",
+    "@patternfly/pfe-select": "^1.12.3",
     "@webcomponents/webcomponentsjs": "^2.8.0",
     "vue": "^3.3.4"
   },
