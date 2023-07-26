@@ -67,25 +67,22 @@
 
 .navbar-select{
     margin:auto;
-    background-color: red;
+    
    width:10%;
-   height:40%;
+  
+   cursor: pointer;
     
     
     
 }
 
-.pfe-select{
-
-width:100%;
-height:100%;
-}
 
 .pfe-select > select{
     width:100%;
     padding:10px 0;
     border:1px solid #06c;
     outline:none;
+    cursor: pointer;
 }
 
 .pfe-options{
