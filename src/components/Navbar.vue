@@ -3,18 +3,30 @@ import "@patternfly/pfe-button";
 import "@patternfly/pfe-dropdown";
 import "@patternfly/pfe-icon";
 import "@patternfly/pfe-select";
-
+import router from '../routes.js';
 
 const categoryList = (category) => {
-  console.log(category);
+  if (category == '/') {
+    router.push('/');
+  }
+  else {
+    router.push(`/category?name=${category}`);
+  }
+
 }
 
+const homePage = () => {
+  window.location.href = '/';
+}
+const goToCart = () => {
+  router.push(`/cart`);
+}
 
 </script>
 
 <template>
   <div class="navbar">
-    <div class="navbar-img">
+    <div class="navbar-img" @click="homePage">
       <img src="../assets/ecommerce-logo.JPG" alt="E-commerce-Image" class="navbar-img-logo" />
     </div>
     <div class="navbar-username">
@@ -29,8 +41,8 @@ const categoryList = (category) => {
     </div>
     <div class="navbar-select">
       <pfe-select class="pfe-select">
-        <select @change="(event) => { categoryList(event.target.value) }">
-          <option value="" class="pfe-options">Categories</option>
+        <select @change="(event) => {categoryList(event.target.value)}">
+          <option value="/" class="pfe-options">Categories</option>
           <option value="laptops" class="pfe-options">Laptops</option>
           <option value="mobiles" class="pfe-options">Mobiles</option>
           <option value="appliances" class="pfe-options">Appliances</option>
@@ -44,7 +56,7 @@ const categoryList = (category) => {
         <button>My Orders</button>
       </pfe-button>
     </div>
-    <div class="navbar-cart">
+    <div class="navbar-cart" @click="goToCart">
       <pfe-icon icon="rh-shopping-cart" size="4x" class="navbar-cart-icon"></pfe-icon>
       <p>My Cart</p>
     </div>

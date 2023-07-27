@@ -7,10 +7,10 @@ import Cart from './Cart.vue';
 </script>
 
 <template>
-<Navbar/>
-<!-- <LandingPageBody/> -->
-<ProductCategory/>
-<Footer/>
+
+<LandingPageBody/>
+
+
 
 </template>
 

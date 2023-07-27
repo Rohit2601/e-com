@@ -11,6 +11,7 @@
 .navbar-img {
   height: 80%;
   width: 8%;
+  cursor: pointer;
 }
 
 .navbar-img-logo {
@@ -28,7 +29,6 @@
 
 .navbar-searchbox {
   width: 60%;
-
   text-align: center;
   margin: auto;
 }

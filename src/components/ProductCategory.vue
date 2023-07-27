@@ -1,15 +1,60 @@
 <script setup>
-import LaptopData from '../assets/LaptopData.json';
 import "@patternfly/pfe-card";
+import { useRouter } from 'vue-router';
+import { ref, watch } from 'vue';
+import router from '../routes.js';
 
-const image = LaptopData[0].image;
-const modelName = LaptopData[0].modelName;
-const price = LaptopData[0].price;
+const routerUrl = useRouter();
+var data = [];
+var routeName = routerUrl.currentRoute.value.query.name;
+var pageStatus = ref('null');
+
+const categoryData = (category) => {
+  if (category == 'laptops') {
+    pageStatus.value = 'loading'
+    fetch('./LaptopData.json')
+      .then((response) => response.json())
+      .then((json) => {      
+        data = json;
+        pageStatus.value = 'fetched';
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  }
+  else if (category == 'mobiles') {
+    pageStatus.value = 'loading'
+    fetch('./MobileData.json')
+      .then((response) => response.json())
+      .then((json) => {      
+        data = json;
+        pageStatus.value = 'fetched';
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  }
+  else {
+    pageStatus.value = 'null';
+    data = [];
+  }
+};
+const productDetailPage = (product,index) => {
+  router.push(`/product-details?product=${product}&id=${index}`);
+
+}
+categoryData(routeName);
+watch(() => router.currentRoute.value.query.name, (newValue) => {
+  routeName = newValue;
+  categoryData(routeName);
+})
 </script>
 
 <template>
   <div class="category-box-cards">
-    <pfe-card class="category-card" v-for="object in LaptopData">
+    <h1 v-show="pageStatus == 'null'">Sorry,No Data Found !!</h1>
+    <h1 v-show="pageStatus == 'loading'">Loading....</h1>
+    <pfe-card v-show="pageStatus == 'fetched'" class="category-card" v-for="(object,index) in data" @click="productDetailPage(routeName,index)">
       <img :src="object.image" alt="image" class="category-card-image" />
       <div slot="pfe-card--footer">
         <h3>{{ object.modelName }}</h3>
@@ -27,24 +72,20 @@ const price = LaptopData[0].price;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-
 }
-
+.category-box-cards>h1 {
+  height: 40vh;
+}
 .category-card {
-
-  height:26rem;
-  width:30%;
+  height: 26rem;
+  width: 22rem;
   margin: 1rem 1rem;
   cursor: pointer;
   border-radius: 25px;
-
 }
-
 .category-card-image {
-height:15rem;
-width:100%;
-
-
+  height: 15rem;
+  width: 100%;
 }
 </style>
 

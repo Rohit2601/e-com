@@ -1,19 +1,21 @@
 import { createWebHistory, createRouter } from "vue-router";
 import LandingPage from "./components/LandingPage.vue";
+import LandingPageBody from "./components/LandingPageBody.vue";
 import ProductDetails from "./components/ProductDetails.vue";
+import ProductCategoryVue from "./components/ProductCategory.vue";
 import Cart from "./components/Cart.vue";
 
 const routes = [
   {
     name: "Home",
     path: "/",
-    component: LandingPage,
+    component: LandingPageBody,
   },
-//   {
-//     name: "Category",
-//     path: "/category",
-//     component: Category,
-//   },
+  {
+    name: "Category",
+    path: "/category",
+    component: ProductCategoryVue,
+  },
   {
     name: "ProductDetails",
     path: "/product-details",
@@ -29,4 +31,6 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
 });
+
+
 export default router;
