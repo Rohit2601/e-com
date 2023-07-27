@@ -1,50 +1,66 @@
-<script>
+<script setup>
 import "@patternfly/pfe-button";
 import "@patternfly/pfe-card";
 import "@patternfly/pfe-select";
 import "@patternfly/pfe-icon";
-// import MobileData from "./MobileData.json";
-// console.log(MobileData);
+import { useRouter } from 'vue-router';
+import {ref} from 'vue';
 
-export default {
-  name: "ProductDetails",
-  data() {
-    return {
-      data1: [],
-      dataloaded: false,
-    };
-  },
-  mounted() {
-    this.fetchData();
-  },
-  methods: {
-    fetchData() {
-      fetch("./MobileData.json")
-        .then((data) => {
-          //  console.log(data);
-          return data.json();
-        })
-        .then((json) => {
-          this.data1 = json;
-          console.log(json);
-        })
-        .catch((err) => {
-          console.error("  ", err);
+const routerUrl = useRouter();
+var category = routerUrl.currentRoute.value.query.product;
+var categoryid = routerUrl.currentRoute.value.query.id;
+var productDetail = {};
+var fetched = ref('loading');
+
+  if (category == 'mobiles') {
+    fetch("./MobileData.json")
+      .then((data) => {
+        return data.json();
+      })
+      .then((json) => {
+
+        var productDetailArr = json.filter((array) => {
+          return array.id==categoryid;
         });
-    },
-  },
-};
+        productDetail=productDetailArr[0];
+        console.log(productDetail);
+        fetched.value='fetched'
+      
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+  else if (category == "laptops") {
+    fetch("./LaptopData.json")
+      .then((data) => {
+
+        return data.json();
+      })
+      .then((json) => {
+        var productDetailArr = json.filter((array) => {
+          return array.id==categoryid;
+        });
+        productDetail=productDetailArr[0];
+        console.log(productDetail);
+        fetched.value='fetched'
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+
+
+
+
+
 </script>
 <template>
-  <div>
+   <div v-show="fetched == 'fetched'">
     <div class="product-detail-cards">
       <pfe-card class="product-box">
         <div>
-          <img
-            src="https://i0.wp.com/abizot.com.ng/wp-content/uploads/2022/09/Apple-iPhone-14-%E2%80%93-Dual-128GBgd.png?fit=857%2C1200&ssl=1"
-            alt="Image not found..!"
-            class="product-img"
-          />
+          <img :src="productDetail.image" alt="Image not found..!" class="product-img" />
         </div>
         <div class="cart-body">
           <div class="variant">
@@ -69,36 +85,24 @@ export default {
         <div>
           <div class="product-title">
             <h1>
-              <p>{{ data1[2]}}</p>
+              {{ productDetail.modelName }}
             </h1>
           </div>
           <div class="product-price">
-            <h2>Price: /- ( Including taxes )</h2>
+            <h2>Price: {{ productDetail.price }}/- ( Including taxes )</h2>
           </div>
-
-          <div class="list-data">
-            <h4>Specifications :</h4>
-            <ul>
-              <li>15 cm (6.1-inch) Super Retina XDR display</li>
-              <li>
-                Cinematic mode adds shallow depth of field and shifts focus
-                automatically in your videos
-              </li>
-              <li>
-                Advanced dual-camera system with 12MP Wide and Ultra Wide
-                cameras; Photographic Styles, Smart HDR 4, Night mode, 4K Dolby
-                Vision HDR recording
-              </li>
-              <li>
-                12MP TrueDepth front camera with Night mode, 4K Dolby Vision HDR
-                recording
-              </li>
-            </ul>
-          </div>
+          <h3>Specifications :</h3>
+           <div v-for="specs in productDetail.specifications">
+            <div class="list-data">
+              <ul>
+                <li>{{ specs }}</li>
+              </ul>
+            </div>
+          </div> 
         </div>
       </pfe-card>
     </div>
-  </div>
+  </div> 
 </template>
 
 <style scoped>
@@ -107,6 +111,7 @@ export default {
   justify-content: center;
   flex-direction: row;
 }
+
 .product-box {
   /* border: 2px solid #ddd; */
   border-radius: 10px;
@@ -118,6 +123,7 @@ export default {
   /* box-sizing: border-box; */
   background-color: white;
 }
+
 .product-box1 {
   padding: 2px;
   width: 30%;
@@ -126,6 +132,7 @@ export default {
   /* box-sizing: border-box; */
   background-color: white;
 }
+
 .product-img {
   width: 100%;
   height: 65vh;
@@ -135,10 +142,12 @@ export default {
   align-items: center;
   justify-content: center;
 }
-.product-box1 > h1 {
+
+.product-box1>h1 {
   color: black;
   background-color: antiquewhite;
 }
+
 .product-title {
   /* background-color: rgb(125, 181, 237); */
   display: flex;
@@ -148,6 +157,7 @@ export default {
   width: 100%;
   height: 70px;
 }
+
 .product-price {
   /* background-color: rgb(125, 181, 237); */
   display: flex;
@@ -157,10 +167,12 @@ export default {
   width: 100%;
   height: 50px;
 }
-.product-price > h2 {
+
+.product-price>h2 {
   margin-left: 14%;
   color: brown;
 }
+
 .variant {
   cursor: pointer;
 }
@@ -169,6 +181,7 @@ export default {
   font-size: larger;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+
 .cart-body {
   display: flex;
   align-items: center;
@@ -176,6 +189,7 @@ export default {
   flex-direction: row;
   /* background-color: aqua; */
 }
+
 .add-to-cart-button {
   /* margin-top: 250%; */
   box-shadow: 1px 2px 3px black;

@@ -39,8 +39,8 @@ const categoryData = (category) => {
     data = [];
   }
 };
-const productDetailPage = (product,index) => {
-  router.push(`/product-details?product=${product}&id=${index}`);
+const productDetailPage = (product,id) => {
+  router.push(`/product-details?product=${product}&id=${id}`);
 
 }
 categoryData(routeName);
@@ -54,7 +54,7 @@ watch(() => router.currentRoute.value.query.name, (newValue) => {
   <div class="category-box-cards">
     <h1 v-show="pageStatus == 'null'">Sorry,No Data Found !!</h1>
     <h1 v-show="pageStatus == 'loading'">Loading....</h1>
-    <pfe-card v-show="pageStatus == 'fetched'" class="category-card" v-for="(object,index) in data" @click="productDetailPage(routeName,index)">
+    <pfe-card v-show="pageStatus == 'fetched'" class="category-card" v-for="(object,index) in data" @click="productDetailPage(routeName,object.id)">
       <img :src="object.image" alt="image" class="category-card-image" />
       <div slot="pfe-card--footer">
         <h3>{{ object.modelName }}</h3>

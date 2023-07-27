@@ -14,7 +14,6 @@ const categoryList = (category) => {
   }
 
 }
-
 const homePage = () => {
   window.location.href = '/';
 }
@@ -41,7 +40,7 @@ const goToCart = () => {
     </div>
     <div class="navbar-select">
       <pfe-select class="pfe-select">
-        <select @change="(event) => {categoryList(event.target.value)}">
+        <select @change="(event) => { categoryList(event.target.value) }">
           <option value="/" class="pfe-options">Categories</option>
           <option value="laptops" class="pfe-options">Laptops</option>
           <option value="mobiles" class="pfe-options">Mobiles</option>

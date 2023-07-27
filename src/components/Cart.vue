@@ -6,25 +6,47 @@ import "@patternfly/pfe-modal";
 export default {
   name: "Cart",
   data() {
-
+    return {
+      data1: [],
+      dataloaded: false,
+    };
+  },
+  mounted() {
+    this.fetchData();
+  },
+  methods: {
+    fetchData() {
+      fetch("./MobileData.json")
+        .then((data) => {
+          //  console.log(data);
+          return data.json();
+        })
+        .then((json) => {
+          this.data1 = json;
+          console.log(json);
+        })
+        .catch((err) => {
+          console.error("  ", err);
+        });
+    },
   },
 };
 </script>
 
 <template>
   <div class="cart-main-body">
-    <div class="cart-body">
+    <div class="cart-body" v-if="data1.length != 0">
       <pfe-card color="lightest">
         <h2 slot="pfe-card--header">Your items in cart</h2>
         <div class="product-name">
-          <h1>Iphone 14</h1>
-          <h2 class="prc">Price: 65000 Rs</h2>
+          <h1>{{ data1[1]["modelName"] }}</h1>
+          <h2 class="prc">Price: {{ data1[0]["price"] }} Rs</h2>
         </div>
 
-        <div class="b">
+        <div class="b" v-if="data1.length != 0">
           <img
-            src="https://i0.wp.com/abizot.com.ng/wp-content/uploads/2022/09/Apple-iPhone-14-%E2%80%93-Dual-128GBgd.png?fit=857%2C1200&ssl=1"
-            alt=""
+            :src="data1[1].image"
+            alt="Image Not Found"
             class="product-img"
           />
           <div class="quantity">
@@ -41,7 +63,7 @@ export default {
           </div>
         </div>
         <div class="total-price-cart">
-          <h2>Total Cart price: </h2>
+          <h2>Total Cart price:</h2>
         </div>
       </pfe-card>
       <div>
@@ -52,9 +74,7 @@ export default {
           <h2 slot="pfe-modal--header">
             Congratulations..! Your Order Has Been Placed
           </h2>
-        <a href="http://localhost:5173/">
-          Go to Home
-        </a>
+          <a href="http://localhost:5173/"> Go to Home </a>
         </pfe-modal>
       </div>
     </div>
