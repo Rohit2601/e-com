@@ -1,0 +1,239 @@
+{
+    "laptops": [
+        {
+           "id":1,
+            "modelName": "Macbook Air M2",
+            "price": 114000,
+            "specifications": [
+                "Apple M2 chip with 8‑core CPU, 8‑core GPU, 16‑core Neural Engine",
+                "8GB unified memory, 256GB SSD storage",
+                "34.46 cm (13.6-inch) Liquid Retina display with True Tone",
+                "1080p FaceTime HD camera",
+                "30W USB-C Power Adapter",
+                "Backlit Magic Keyboard with Touch ID - US English"
+            ],
+            "image": "https://images.unsplash.com/photo-1511385348-a52b4a160dc2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bGFwdG9wJTIwY29tcHV0ZXJ8ZW58MHx8MHx8fDA%3D&w=1000&q=80"
+        },
+        {
+           "id":2,
+            "modelName": "Dell Inspiron 14",
+            "price": 57500,
+            "specifications": [
+                "AMD Ryzen™ 5 5625U 6-core/12-thread Processor with Radeon™ Graphics",
+                "Windows 11 Home Single Language, English",
+                "14 inch, FHD+ 1920x1200, 60Hz, Non-Touch, AG, Wide Viewing Angle, 250 nit, ComfortView",
+                "16 GB, 2 x 8 GB, DDR4, 3200 MHz"
+            ],
+            "image": "https://images.rawpixel.com/image_png_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvcGYtczczLXRlZC0xMDIyMi5wbmc.png?s=eHiWXY9rDBJrjWGsCN6pJXrj7i3JjX6BTbJfi-vEngY"
+        },
+        {
+           "id":3,
+            "modelName": "HP Pavilion 14",
+            "price": 65000,
+            "specifications": [
+                "12th Generation Intel® Core™ i5 processor",
+                "Windows 11 Home",
+                "35.6 cm (14) diagonal FHD 1920 x 1080 & Intel® Iris® Xᵉ Graphics",
+                "16 GB RAM-512 GB SSD Harddrive",
+                "Weighs: 1.41 kg / HD Webcam / Backlit Keyboard / B&O speakers"
+            ],
+            "image": "https://images.unsplash.com/photo-1511385348-a52b4a160dc2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bGFwdG9wJTIwY29tcHV0ZXJ8ZW58MHx8MHx8fDA%3D&w=1000&q=80"
+        },
+        {
+           "id":4,
+            "modelName": "Lenovo ThinkPad E13",
+            "price": 87000,
+            "specifications": [
+                "High-performance 35.5cms (14) business laptop, perfect for on-the-go professionals",
+                "Powered by AMD Ryzen™ 5000 Series Mobile Processors & up to Windows 11 Pro",
+                "Enhanced security, navigation, & conferencing features",
+                "Up to 1TB of Gen 4 SSD storage, with dual SSD option",
+                "Superb visuals, audio & connectivity, including WiFi 6E option"
+            ],
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlABIEPOyTnCC1sSFzIg_6E4o_3fpJ9e-Erw&usqp=CAU"
+        },
+        {
+           "id":5,
+            "modelName": "Lenovo ThinkPad E13",
+            "price": 87000,
+            "specifications": [
+                "High-performance 35.5cms (14) business laptop, perfect for on-the-go professionals",
+                "Powered by AMD Ryzen™ 5000 Series Mobile Processors & up to Windows 11 Pro",
+                "Enhanced security, navigation, & conferencing features",
+                "Up to 1TB of Gen 4 SSD storage, with dual SSD option",
+                "Superb visuals, audio & connectivity, including WiFi 6E option"
+            ],
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlABIEPOyTnCC1sSFzIg_6E4o_3fpJ9e-Erw&usqp=CAU"
+        },
+        {
+           "id":6,
+            "modelName": "Lenovo ThinkPad E13",
+            "price": 87000,
+            "specifications": [
+                "High-performance 35.5cms (14) business laptop, perfect for on-the-go professionals",
+                "Powered by AMD Ryzen™ 5000 Series Mobile Processors & up to Windows 11 Pro",
+                "Enhanced security, navigation, & conferencing features",
+                "Up to 1TB of Gen 4 SSD storage, with dual SSD option",
+                "Superb visuals, audio & connectivity, including WiFi 6E option"
+            ],
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlABIEPOyTnCC1sSFzIg_6E4o_3fpJ9e-Erw&usqp=CAU"
+        },
+        {
+           "id":7,
+            "modelName": "Macbook Air M2",
+            "price": 114000,
+            "specifications": [
+                "Apple M2 chip with 8‑core CPU, 8‑core GPU, 16‑core Neural Engine",
+                "8GB unified memory, 256GB SSD storage",
+                "34.46 cm (13.6-inch) Liquid Retina display with True Tone",
+                "1080p FaceTime HD camera",
+                "30W USB-C Power Adapter",
+                "Backlit Magic Keyboard with Touch ID - US English"
+            ],
+            "image": "https://images.unsplash.com/photo-1511385348-a52b4a160dc2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bGFwdG9wJTIwY29tcHV0ZXJ8ZW58MHx8MHx8fDA%3D&w=1000&q=80"
+        },
+        {
+            "id":8,
+            "modelName": "Dell Inspiron 14",
+            "price": 57500,
+            "specifications": [
+                "AMD Ryzen™ 5 5625U 6-core/12-thread Processor with Radeon™ Graphics",
+                "Windows 11 Home Single Language, English",
+                "14 inch, FHD+ 1920x1200, 60Hz, Non-Touch, AG, Wide Viewing Angle, 250 nit, ComfortView",
+                "16 GB, 2 x 8 GB, DDR4, 3200 MHz"
+            ],
+            "image": "https://images.rawpixel.com/image_png_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvcGYtczczLXRlZC0xMDIyMi5wbmc.png?s=eHiWXY9rDBJrjWGsCN6pJXrj7i3JjX6BTbJfi-vEngY"
+        }
+    ],
+    "mobiles": [
+        {
+            "id": 1,
+            "modelName": "Iphone 14",
+            "price": 75000,
+            "specifications": [
+                "15.40 cm (6.1-inch) Super Retina XDR display",
+                "Advanced camera system for better photos in any light",
+                "Cinematic mode now in 4K Dolby Vision up to 30 fps",
+                "Action mode for smooth, steady, handheld videos Vital safety technology — Crash Detection calls for help when you can`t",
+                "All-day battery life and up to 20 hours of video playback",
+                "Industry-leading durability features with Ceramic Shield and water resistance"
+            ],
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRohxWDMNMDXz_ld_Am2bDnoVMKuQb9KrMnf_WQv72j5Jx-P1vBhho58VM3JCl3M9D66JE&usqp=CAU",
+            "storage": [
+                64,
+                128,
+                256,
+                512
+            ]
+        },
+        {
+            "id": 2,
+            "modelName": "Iphone 13 pro",
+            "price": 60000,
+            "specifications": [
+                "15 cm (6.1-inch) Super Retina XDR display",
+                "Cinematic mode adds shallow depth of field and shifts focus automatically in your videos",
+                "Advanced dual-camera system with 12MP Wide and Ultra Wide cameras; Photographic Styles, Smart HDR 4, Night mode, 4K Dolby Vision HDR recording",
+                "12MP TrueDepth front camera with Night mode, 4K Dolby Vision HDR recording",
+                "A15 Bionic chip for lightning-fast performance"
+            ],
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-mwBZqUula8SwMCW4YnIFhHIYFli1XPL4gw&usqp=CAU",
+            "storage": [
+                64,
+                128
+            ]
+        },
+        {
+            "id": 3,
+            "modelName": "Oneplus 10",
+            "price": 34000,
+            "specifications": [
+                "Camera: 50MP Main Camera with Sony IMX766 and 2MP Macro Camera with Dual LED Flash; 16MP Front (Selfie) Camera with Sony IMX471",
+                "Camera Features: Nightscape2.0, Super Macro, UltraShot HDR, Smart Scene Recognition, Portrait mode, Pro mode, Panorama, Tilt-shift mode, Focus Peaking, Filters, Video Nightscape, Video HDR, Video Portrait Timelapse, Hyperlapse Mode",
+                "Display: 6.7 Inches; 120 Hz IRIS Display; Resolution: 2400 X 1080 pixels 394 ppi; Aspect Ratio: 20:9",
+                "Display Features: Hyper Touch Mode, Reading Mode, Night Mode, Eye Comfort Mode, Auto brightness",
+                "Operating System: OxygenOS based on Android 12, Processor: MTK D8100 Max"
+            ],
+            "image": "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202111/OnePlus_10_Pro_image.jpg?size=690:388",
+            "storage": [
+                32,
+                64,
+                128,
+                256
+            ]
+        },
+        {
+            "id": 4,
+            "modelName": "Xiaomi Redmi note 12",
+            "price": 15000,
+            "specifications": [
+                "Display: Super AMOLED (1080x2400) Display with 120Hz Refresh rate; 1200nits peak brightness; 240Hz Touch sampling rate",
+                "Processor: Snapdragon 4 Gen1 6nm Octa-core 5G processor for high performance and efficiency with Adreno 619 GPU; Up to 2.0GHz",
+                "Camera: 48MP AI Triple camera setup with 8MP Ultra Wide sensor and 2MP Macro camera| 13MP Front camera",
+                "Battery: 5000mAh large battery with 33W fast charger in-box and Type-C connectivity",
+                "Memory, Storage & SIM: 6GB RAM | 128GB UFS 2.2 storage expandable up to 1TB | Dual SIM (nano+nano) Dual 5G (5G+5G)"
+            ],
+            "image": "https://i01.appmifile.com/v1/MI_18455B3E4DA706226CF7535A58E875F0267/pms_1672876160.50773273.jpg",
+            "storage": [
+                64,
+                128,
+                256
+            ]
+        },
+        {
+            "id": 5,
+            "modelName": "Xiaomi Redmi note 12",
+            "price": 15000,
+            "specifications": [
+                "Display: Super AMOLED (1080x2400) Display with 120Hz Refresh rate; 1200nits peak brightness; 240Hz Touch sampling rate",
+                "Processor: Snapdragon 4 Gen1 6nm Octa-core 5G processor for high performance and efficiency with Adreno 619 GPU; Up to 2.0GHz",
+                "Camera: 48MP AI Triple camera setup with 8MP Ultra Wide sensor and 2MP Macro camera| 13MP Front camera",
+                "Battery: 5000mAh large battery with 33W fast charger in-box and Type-C connectivity",
+                "Memory, Storage & SIM: 6GB RAM | 128GB UFS 2.2 storage expandable up to 1TB | Dual SIM (nano+nano) Dual 5G (5G+5G)"
+            ],
+            "image": "https://i01.appmifile.com/v1/MI_18455B3E4DA706226CF7535A58E875F0267/pms_1672876160.50773273.jpg",
+            "storage": [
+                64,
+                128,
+                256
+            ]
+        },
+        {
+            "id": 6,
+            "modelName": "Iphone 14",
+            "price": 75000,
+            "specifications": [
+                "15.40 cm (6.1-inch) Super Retina XDR display",
+                "Advanced camera system for better photos in any light",
+                "Cinematic mode now in 4K Dolby Vision up to 30 fps",
+                "Action mode for smooth, steady, handheld videos Vital safety technology — Crash Detection calls for help when you can`t",
+                "All-day battery life and up to 20 hours of video playback",
+                "Industry-leading durability features with Ceramic Shield and water resistance"
+            ],
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRohxWDMNMDXz_ld_Am2bDnoVMKuQb9KrMnf_WQv72j5Jx-P1vBhho58VM3JCl3M9D66JE&usqp=CAU",
+            "storage": [
+                64,
+                128,
+                256,
+                512
+            ]
+        },
+        {
+            "id": 7,
+            "modelName": "Iphone 13 pro",
+            "price": 60000,
+            "specifications": [
+                "15 cm (6.1-inch) Super Retina XDR display",
+                "Cinematic mode adds shallow depth of field and shifts focus automatically in your videos",
+                "Advanced dual-camera system with 12MP Wide and Ultra Wide cameras; Photographic Styles, Smart HDR 4, Night mode, 4K Dolby Vision HDR recording",
+                "12MP TrueDepth front camera with Night mode, 4K Dolby Vision HDR recording",
+                "A15 Bionic chip for lightning-fast performance"
+            ],
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTanzkstyZEcVwdqMBiRxkqf8-GTO56nWCMkw&usqp=CAU",
+            "storage": [
+                64,
+                128
+            ]
+        }
+    ]
+}

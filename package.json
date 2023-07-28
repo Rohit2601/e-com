@@ -1,0 +1,28 @@
+{
+  "name": "e-commerce",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@patternfly/pfe-button": "^1.12.3",
+    "@patternfly/pfe-card": "^1.12.3",
+    "@patternfly/pfe-cta": "^1.12.3",
+    "@patternfly/pfe-dropdown": "^1.12.3",
+    "@patternfly/pfe-icon": "^1.12.3",
+    "@patternfly/pfe-modal": "^1.12.3",
+    "@patternfly/pfe-navigation": "^1.12.3",
+    "@patternfly/pfe-select": "^1.12.3",
+    "@webcomponents/webcomponentsjs": "^2.8.0",
+    "vue": "^3.3.4",
+    "vue-router": "^4.2.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.2.3",
+    "vite": "^4.4.5"
+  }
+}
