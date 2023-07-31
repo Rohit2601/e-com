@@ -17,7 +17,10 @@
     "@patternfly/pfe-modal": "^1.12.3",
     "@patternfly/pfe-navigation": "^1.12.3",
     "@patternfly/pfe-select": "^1.12.3",
+    "@patternfly/pfe-styles": "^1.12.3",
+    "@rhds/elements": "^1.1.0",
     "@webcomponents/webcomponentsjs": "^2.8.0",
+    "pinia": "^2.1.6",
     "vue": "^3.3.4",
     "vue-router": "^4.2.4"
   },

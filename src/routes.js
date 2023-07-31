@@ -12,8 +12,8 @@ const routes = [
     component: LandingPageBody,
   },
   {
-    name: "Category",
-    path: "/category",
+    name: "Products",
+    path: "/products",
     component: ProductCategoryVue,
   },
   {
