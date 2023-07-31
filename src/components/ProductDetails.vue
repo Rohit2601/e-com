@@ -3,69 +3,84 @@ import "@patternfly/pfe-button";
 import "@patternfly/pfe-card";
 import "@patternfly/pfe-select";
 import "@patternfly/pfe-icon";
-import { useRouter } from 'vue-router';
-import {ref} from 'vue';
+import { useRouter } from "vue-router";
+import { ref, onMounted } from "vue";
+import router from "../routes.js";
+import { useStore } from "vuex";
 
 const routerUrl = useRouter();
 var category = routerUrl.currentRoute.value.query.product;
 var categoryid = routerUrl.currentRoute.value.query.id;
-var productDetail = {};
-var fetched = ref('loading');
+var productDetail = ref({});
+var fetched = ref("loading");
+// const cartItems = ref([]);
+const selectedQuantity = ref(1);
 
-  if (category == 'mobiles') {
-    fetch("./MobileData.json")
-      .then((data) => {
-        return data.json();
-      })
-      .then((json) => {
-
-        var productDetailArr = json.filter((array) => {
-          return array.id==categoryid;
-        });
-        productDetail=productDetailArr[0];
-        console.log(productDetail);
-        fetched.value='fetched'
-      
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }
-  else if (category == "laptops") {
-    fetch("./LaptopData.json")
-      .then((data) => {
-
-        return data.json();
-      })
-      .then((json) => {
-        var productDetailArr = json.filter((array) => {
-          return array.id==categoryid;
-        });
-        productDetail=productDetailArr[0];
-        console.log(productDetail);
-        fetched.value='fetched'
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+function fetchProductDetail(category, categoryid) {
+  console.log(category, categoryid);
+  let dataURL;
+  if (category === "mobiles") {
+    dataURL = "./MobileData.json";
+  } else if (category === "laptops") {
+    dataURL = "./LaptopData.json";
+  } else {
+    console.error("Invalid category:", category);
+    return;
   }
 
+  fetch(dataURL)
+    .then((data) => {
+      return data.json();
+    })
+    .then((json) => {
+      var productDetailArr = json.filter((array) => {
+        return array.id == categoryid;
+      });
+      productDetail = productDetailArr[0];
+      console.log(productDetail);
+      fetched.value = "fetched";
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+}
 
+const store = useStore();
 
+function addToCart(productDetail) {
+  alert("Item added to cart!");
+  const item = {
+    product: productDetail,
+    quantity: selectedQuantity.value,
+  };
+  // Dispatch the addToCart action to add the item to the cart
+  store.dispatch("addToCart", item);
+}
 
+onMounted(() => {
+  fetchProductDetail(category, categoryid);
+});
 
+const cartPage = (product, id) => {
+  router.push(`/cart?product=${product}&id=${id}`);
+};
 </script>
+
 <template>
-   <div v-show="fetched == 'fetched'">
+  <div v-if="fetched == 'fetched'">
     <div class="product-detail-cards">
       <pfe-card class="product-box">
         <div>
-          <img :src="productDetail.image" alt="Image not found..!" class="product-img" />
+          <img
+            :src="productDetail.image"
+            alt="Image not found..!"
+            class="product-img"
+          />
         </div>
         <div class="cart-body">
           <div class="variant">
             <h4>Storage :</h4>
-            <pfe-select>
+            <pfe-select v-model="selectedQuantity">
               <select>
                 <!-- <option>Please select the storage</option> -->
                 <option value="64">64 GB</option>
@@ -76,7 +91,7 @@ var fetched = ref('loading');
           </div>
           <div class="add-to-cart-button">
             <pfe-button>
-              <button>Add to Cart</button>
+              <button @click="addToCart(productDetail)">Add to Cart</button>
             </pfe-button>
           </div>
         </div>
@@ -92,17 +107,17 @@ var fetched = ref('loading');
             <h2>Price: {{ productDetail.price }}/- ( Including taxes )</h2>
           </div>
           <h3>Specifications :</h3>
-           <div v-for="specs in productDetail.specifications">
+          <div v-for="specs in productDetail.specifications">
             <div class="list-data">
               <ul>
                 <li>{{ specs }}</li>
               </ul>
             </div>
-          </div> 
+          </div>
         </div>
       </pfe-card>
     </div>
-  </div> 
+  </div>
 </template>
 
 <style scoped>
@@ -143,7 +158,7 @@ var fetched = ref('loading');
   justify-content: center;
 }
 
-.product-box1>h1 {
+.product-box1 > h1 {
   color: black;
   background-color: antiquewhite;
 }
@@ -168,7 +183,7 @@ var fetched = ref('loading');
   height: 50px;
 }
 
-.product-price>h2 {
+.product-price > h2 {
   margin-left: 14%;
   color: brown;
 }
