@@ -66,8 +66,7 @@
 
 .pfe-options {
   font-size: 1rem;
-  padding:5px;
-  
+  padding: 5px;
 }
 
 .navbar-order {
@@ -76,18 +75,7 @@
 
 .navbar-cart {
   cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin: 1.2rem;
-  max-height: 6%;
-}
-.navbar-cart-icon {
-  padding-top: 1rem;
+  margin:auto; 
 }
 
-.navbar-cart > p {
-  font-weight: bold;
-  padding-bottom: 1rem;
-}
+

@@ -4,22 +4,25 @@ import "@patternfly/pfe-dropdown";
 import "@patternfly/pfe-icon";
 import "@patternfly/pfe-select";
 import router from '../routes.js';
+import { useProductStore } from '../stores/products.js';
 
-const selectCategory = (productName) => {
-  if (productName == '/') {
+const productStore = useProductStore();
+function checkCategory(category) {
+  if (category == '/') {
     router.push('/');
   }
   else {
-    router.push(`/category?product=${productName}`);
+    router.push(`/products?category=${category}`);
+    productStore.populateProductLists(category);
   }
 }
+
 const homePage = () => {
   window.location.href = '/';
 }
 const goToCart = () => {
   router.push(`/cart`);
 }
-
 </script>
 
 <template>
@@ -39,7 +42,7 @@ const goToCart = () => {
     </div>
     <div class="navbar-select">
       <pfe-select class="pfe-select">
-        <select @change="(event) => { selectCategory(event.target.value) }">
+        <select @change="(event) => checkCategory(event.target.value)">
           <option value="/" class="pfe-options">Categories</option>
           <option value="laptops" class="pfe-options">Laptops</option>
           <option value="mobiles" class="pfe-options">Mobiles</option>
@@ -56,8 +59,8 @@ const goToCart = () => {
     </div>
     <div class="navbar-cart" @click="goToCart">
       <pfe-icon icon="rh-shopping-cart" size="4x" class="navbar-cart-icon"></pfe-icon>
-      <p>My Cart</p>
     </div>
+
   </div>
 </template>
 

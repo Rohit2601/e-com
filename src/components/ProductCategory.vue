@@ -1,70 +1,58 @@
 <script setup>
 import "@patternfly/pfe-card";
-import { useRouter } from 'vue-router';
-import { ref, watch } from 'vue';
-import router from '../routes.js';
-
-const routerUrl = useRouter();
-var productLists = ref([]);
-var productName = routerUrl.currentRoute.value.query.product;
-const getProductLists = (productName) => {
-  fetch('./data.json')
-    .then((response) => response.json())
-    .then((json) => {
-      productLists.value = json[productName] ? json[productName] : [];
-    })
-    .catch((error) => {
-      console.log(error);
-    })
+import '@rhds/elements/rh-spinner/rh-spinner.js';
+import { useProductStore } from '../stores/products.js';
+import router from "../routes";
+const productStore = useProductStore();
+const productDetailPage = (modelName, id) => {
+  router.push(`/product-details?product=${modelName}&id=${id}`);
 }
-getProductLists(productName);
-const productDetailPage = (productName, id) => {
-  router.push(`/product-details?product=${productName}&id=${id}`);
-}
-watch(() => routerUrl.currentRoute.value.query.product, (newProductName) => {
-  getProductLists(newProductName);
-})
-
 </script>
+
 <template>
   <div class="category-box-cards">
-    <h1 v-if="productLists.length == 0">Sorry,no Data to Show !!</h1>
-    <pfe-card v-else class="category-card" v-for="(product, index) in productLists"
-      @click="productDetailPage(product.modelName, product.id)">
-      <img :src="product.image" alt="image" class="category-card-image" />
-      <div slot="pfe-card--footer">
-        <h3>{{ product.modelName }}</h3>
-        <h3>&#8377; {{ product.price }}</h3>
-      </div>
-    </pfe-card>
+    <h1 v-if="productStore.isLoading == true" class="server-message"><rh-spinner></rh-spinner></h1>
+    <h1 v-if="productStore.isLoading == false && productStore.showError == true" class="server-message">Sorry,No Data
+      Found!!!</h1>
+    <div class="pfe-l-grid pfe-m-gutters  pfe-m-all-4-col">
+      <pfe-card v-if="productStore.isLoading == false && productStore.showError == false" class="category-card"
+        v-for="(product, index) in productStore.productLists" @click="productDetailPage(product.modelName, product.id)">
+        <img :src="product.image" alt="image" class="category-card-image" />
+        <div slot="pfe-card--footer">
+          <h3>{{ product.modelName }}</h3>
+          <h3>&#8377; {{ product.price }}</h3>
+        </div>
+      </pfe-card>
+    </div>
   </div>
 </template>
 
 <style scoped>
 .category-box-cards {
   margin-top: 2rem;
-  max-width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+  width: 100%;
 }
-.category-box-cards>h1 {
+
+.server-message {
+  text-align: center;
   height: 40vh;
+  width: 100%;
+  margin: auto;
 }
+
 .category-card {
-  height: 26rem;
+  height: 25rem;
   width: 22rem;
-  margin: 1rem 1rem;
+  margin: 2rem auto;
   cursor: pointer;
   border-radius: 25px;
 }
+
 .category-card-image {
   height: 15rem;
   width: 100%;
 }
 </style>
-
 
 
 
