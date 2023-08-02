@@ -4,21 +4,24 @@ export const useProductStore = defineStore("products", {
   state: () => {
     return {
       productLists: [],
-      category:'',
+      categoryName: "",
       isLoading: false,
       showError: false,
     };
   },
   actions: {
     populateProductLists(category) {
-      this.category=category;
+      this.categoryName = category;
       this.isLoading = true;
       this.showError = false;
       fetch("./data.json")
         .then((response) => response.json())
         .then((json) => {
-          this.productLists = json[category] ? json[category] : [];
-          this.showError = this.productLists.length == 0 ? true : false;
+          this.productLists = json[this.categoryName]
+            ? json[this.categoryName]
+            : [];
+            
+          this.showError = this.productLists.length == 0 ? true : false;          
           this.isLoading = false;
         })
         .catch((error) => {

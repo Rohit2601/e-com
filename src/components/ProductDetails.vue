@@ -8,42 +8,38 @@ import { ref, onMounted } from "vue";
 import router from "../routes.js";
 import { useStore } from "vuex";
 
+import {useCartStore} from '../stores/cart';
+const cartStore = useCartStore();
+
 const routerUrl = useRouter();
-var category = routerUrl.currentRoute.value.query.product;
+var product = routerUrl.currentRoute.value.query.product;
+var category = routerUrl.currentRoute.value.query.category;
 var categoryid = routerUrl.currentRoute.value.query.id;
 var productDetail = ref({});
 var fetched = ref("loading");
-// const cartItems = ref([]);
 const selectedQuantity = ref(1);
 
 function fetchProductDetail(category, categoryid) {
-  console.log(category, categoryid);
-  let dataURL;
-  if (category === "mobiles") {
-    dataURL = "./MobileData.json";
-  } else if (category === "laptops") {
-    dataURL = "./LaptopData.json";
-  } else {
-    console.error("Invalid category:", category);
-    return;
-  }
-
-  fetch(dataURL)
+  console.log(category, categoryid, product);
+  fetch("./data.json")
     .then((data) => {
       return data.json();
     })
     .then((json) => {
-      var productDetailArr = json.filter((array) => {
+      console.log(json);
+      var productArr = json[category];
+      var productDetailArr = productArr.filter((array) => {
         return array.id == categoryid;
       });
       productDetail = productDetailArr[0];
-      console.log(productDetail);
+      console.log(productDetailArr);
       fetched.value = "fetched";
     })
     .catch((err) => {
       console.error(err);
     });
 }
+fetchProductDetail(category, categoryid);
 
 const store = useStore();
 
@@ -53,17 +49,19 @@ function addToCart(productDetail) {
     product: productDetail,
     quantity: selectedQuantity.value,
   };
-  // Dispatch the addToCart action to add the item to the cart
   store.dispatch("addToCart", item);
+
+
+  const cartItem = {
+    uid:`${productDetail.id + '-' +productDetail.modelName}`,
+    modelName:productDetail.modelName,
+    price:productDetail.price,
+    image:productDetail.image,
+    quantity:1
+  };
+ 
+  cartStore.addToCart(cartItem);
 }
-
-onMounted(() => {
-  fetchProductDetail(category, categoryid);
-});
-
-const cartPage = (product, id) => {
-  router.push(`/cart?product=${product}&id=${id}`);
-};
 </script>
 
 <template>
@@ -82,7 +80,6 @@ const cartPage = (product, id) => {
             <h4>Storage :</h4>
             <pfe-select v-model="selectedQuantity">
               <select>
-                <!-- <option>Please select the storage</option> -->
                 <option value="64">64 GB</option>
                 <option value="128">128 GB</option>
                 <option value="256">256 GB</option>
@@ -126,7 +123,6 @@ const cartPage = (product, id) => {
   justify-content: center;
   flex-direction: row;
 }
-
 .product-box {
   /* border: 2px solid #ddd; */
   border-radius: 10px;
@@ -138,7 +134,6 @@ const cartPage = (product, id) => {
   /* box-sizing: border-box; */
   background-color: white;
 }
-
 .product-box1 {
   padding: 2px;
   width: 30%;
@@ -147,7 +142,6 @@ const cartPage = (product, id) => {
   /* box-sizing: border-box; */
   background-color: white;
 }
-
 .product-img {
   width: 100%;
   height: 65vh;
@@ -157,12 +151,10 @@ const cartPage = (product, id) => {
   align-items: center;
   justify-content: center;
 }
-
 .product-box1 > h1 {
   color: black;
   background-color: antiquewhite;
 }
-
 .product-title {
   /* background-color: rgb(125, 181, 237); */
   display: flex;
@@ -172,7 +164,6 @@ const cartPage = (product, id) => {
   width: 100%;
   height: 70px;
 }
-
 .product-price {
   /* background-color: rgb(125, 181, 237); */
   display: flex;
@@ -182,21 +173,17 @@ const cartPage = (product, id) => {
   width: 100%;
   height: 50px;
 }
-
 .product-price > h2 {
   margin-left: 14%;
   color: brown;
 }
-
 .variant {
   cursor: pointer;
 }
-
 .list-data {
   font-size: larger;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-
 .cart-body {
   display: flex;
   align-items: center;
@@ -204,7 +191,6 @@ const cartPage = (product, id) => {
   flex-direction: row;
   /* background-color: aqua; */
 }
-
 .add-to-cart-button {
   /* margin-top: 250%; */
   box-shadow: 1px 2px 3px black;
