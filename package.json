@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@patternfly/pfe-badge": "^1.12.3",
     "@patternfly/pfe-button": "^1.12.3",
     "@patternfly/pfe-card": "^1.12.3",
     "@patternfly/pfe-cta": "^1.12.3",
@@ -22,7 +23,8 @@
     "@webcomponents/webcomponentsjs": "^2.8.0",
     "pinia": "^2.1.6",
     "vue": "^3.3.4",
-    "vue-router": "^4.2.4"
+    "vue-router": "^4.2.4",
+    "vuex": "^4.1.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",

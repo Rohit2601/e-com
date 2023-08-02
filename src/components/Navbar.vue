@@ -3,16 +3,24 @@ import "@patternfly/pfe-button";
 import "@patternfly/pfe-dropdown";
 import "@patternfly/pfe-icon";
 import "@patternfly/pfe-select";
+import "@patternfly/pfe-badge";
 import router from '../routes.js';
 import { useProductStore } from '../stores/products.js';
 
+// Updated Code for Cart Badge
+import { useCartStore } from "../stores/cart.js";
+const cartStore = useCartStore();
+
+
+
 const productStore = useProductStore();
+
 function checkCategory(category) {
   if (category == '/') {
     router.push('/');
   }
   else {
-    router.push(`/products?category=${category}`);
+    router.push(`/products`);
     productStore.populateProductLists(category);
   }
 }
@@ -28,11 +36,10 @@ const goToCart = () => {
 <template>
   <div class="navbar">
     <div class="navbar-img" @click="homePage">
-      <img src="../assets/ecommerce-logo.JPG" alt="E-commerce-Image" class="navbar-img-logo" />
+      <img src="../assets/redhat-logo.png" alt="E-commerce-Image" class="navbar-img-logo" />
     </div>
     <div class="navbar-username">
-      <h4>Hello,</h4>
-      <h3>User</h3>
+      <h3>Redhat Ecommerce</h3>
     </div>
     <div class="navbar-searchbox">
       <input type="text" placeholder="Search E-commerce.in" class="navbar-searchbox-input" />
@@ -43,7 +50,7 @@ const goToCart = () => {
     <div class="navbar-select">
       <pfe-select class="pfe-select">
         <select @change="(event) => checkCategory(event.target.value)">
-          <option value="/" class="pfe-options">Categories</option>
+          <option value="/" selected disabled hidden class="pfe-options">Select Category</option>
           <option value="laptops" class="pfe-options">Laptops</option>
           <option value="mobiles" class="pfe-options">Mobiles</option>
           <option value="appliances" class="pfe-options">Appliances</option>
@@ -54,13 +61,15 @@ const goToCart = () => {
     </div>
     <div class="navbar-order">
       <pfe-button>
-        <button>My Orders</button>
+        <button @click="router.push('/my-orders')">My Orders</button>
       </pfe-button>
     </div>
     <div class="navbar-cart" @click="goToCart">
-      <pfe-icon icon="rh-shopping-cart" size="4x" class="navbar-cart-icon"></pfe-icon>
+      <pfe-icon icon="rh-shopping-cart" size="4x" class="navbar-cart-icon">
+      </pfe-icon>
+      <pfe-badge v-if="cartStore.cartItemsCount" state="default" aria-label="cart Items" :number="cartStore.cartItemsCount" class="navbar-cart-badge" threshold="10">
+      </pfe-badge>      
     </div>
-
   </div>
 </template>
 
