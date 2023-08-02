@@ -2,7 +2,6 @@
 import "@patternfly/pfe-button";
 import "@patternfly/pfe-card";
 import "@patternfly/pfe-modal";
-import { useRouter } from "vue-router";
 import { ref, inject, watch } from "vue";
 import { useStore } from "vuex";
 
@@ -28,29 +27,42 @@ watch(cartItems, (newVal) => {
 </script>
 
 <template>
-  <div class="main-cart-body">
-    <div class="card-body" v-for="item in store.state.cartItems" :key="item">
+  <div v-if="store.state.cartItems.length == 0" class="empty-cart-heading">
+    <h1>No Items Added in Cart..!</h1>
+    <h3>
+      <a href="http://localhost:5173/"> Click here to Continue Shopping </a>
+    </h3>
+  </div>
+  <div v-else class="main-cart-body">
+    <pfe-card class="header-card" color="lightest"
+      ><h1 slot="pfe-card--header">Your items in cart</h1>
+    </pfe-card>
+
+    <div class="card-body" v-for="item in store.state.cartItems" :key="item.id">
       <pfe-card color="lightest">
-        <h2 slot="pfe-card--header">Your items in cart</h2>
         <div class="product-name">
           <h1>{{ item.product.modelName }}</h1>
+        </div>
+        <div class="img-container">
           <img
             :src="item.product.image"
             alt="Image Not Found"
             class="product-img"
           />
         </div>
+
         <div class="cart-price-main">
           <div class="cart-price">
             <h2>
               Price:
-              {{ calculatePrice(item.product.price, selectedQuantity) }} Rs
+              {{ calculatePrice(item.product.price, item.quantity) }} Rs
             </h2>
           </div>
           <div class="quantity">
             <h4>Quantity:</h4>
-            <pfe-select>
-              <select v-model="selectedQuantity">
+            <pfe-select v-model="selectedQuantity">
+              <select>
+                <option value="itemQuan">{{ item.quantity }}</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -62,8 +74,9 @@ watch(cartItems, (newVal) => {
         </div>
       </pfe-card>
     </div>
+
     <div class="address-body">
-      <pfe-card>
+      <pfe-card color="lightest">
         <div class="address">
           <h2>Enter your address here</h2>
           <form class="form" action="fillform">
@@ -89,7 +102,7 @@ watch(cartItems, (newVal) => {
             <h2 slot="pfe-modal--header">
               Congratulations..! Your Order Has Been Placed
             </h2>
-            <a href="http://localhost:5173/"> Go to Home </a>
+            <a href="http://localhost:5173/"> Continue Shopping..! </a>
           </pfe-modal>
         </div>
       </pfe-card>
@@ -98,21 +111,42 @@ watch(cartItems, (newVal) => {
 </template>
 
 <style scoped>
+.empty-cart-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 5%;
+  margin-bottom: 30%;
+}
+/* .img-container{
+  background-color: aqua;
+  width: 90%;
+  margin-left: %;
+} */
 .main-cart-body {
   display: flex;
   justify-content: center;
   flex-direction: column;
   width: 70%;
   margin-left: 15%;
+  background-color: white;
+}
+.header-card {
+  background-color: white;
+  width: 100%;
+  margin-top: 2%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .card-body {
   width: 60%;
-  margin-top: 2%;
-  height: 3-vh;
+  height: 20%;
   margin-left: 20%;
-  background-color: aqua;
-  border: 2px solid black;
-  border-radius: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-bottom: 1px;
   font-family: "Red Hat Display", "RedHatDisplay", "Overpass",
     "Arial,sans-serif";
 }
@@ -120,15 +154,15 @@ watch(cartItems, (newVal) => {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40%;
+  width: 50%;
   margin-top: 5%;
-  margin-left: 30%;
+  margin-left: 25%;
   background-color: white;
-  border: 2px solid black;
+  border: 1px solid black;
   border-radius: 10px;
 }
 .product-name {
-  margin-left: 4px;
+  margin-left: 5%;
   width: 55%;
 }
 .address {
@@ -144,12 +178,10 @@ watch(cartItems, (newVal) => {
 .cart-price {
   margin-left: 1px;
   color: red;
-  /* background-color: aqua; */
 }
 .product-img {
-  width: 50%;
-  height: 17vh;
-  margin-left: 125%;
+  width: 35%;
+  margin-left: 60%;
 }
 .quantity {
   width: 25%;
@@ -158,7 +190,6 @@ watch(cartItems, (newVal) => {
   justify-content: center;
   margin-left: 35%;
   height: 3.8vh;
-  /* background-color: aqua; */
 }
 .checkout-button {
   display: flex;
@@ -176,7 +207,6 @@ watch(cartItems, (newVal) => {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: aqua; */
 }
 .delivery-btn {
   display: flex;

@@ -5,30 +5,34 @@ import { useProductStore } from "../stores/products.js";
 import router from "../routes";
 const productStore = useProductStore();
 const productDetailPage = (modelName, id) => {
-  router.push(`/product-details?category=${productStore.category}&product=${modelName}&id=${id}`);
+  router.push(`/product-details?category=${productStore.categoryName}&product=${modelName}&id=${id}`);
 }
+console.log(productStore.productLists);
+console.log(productStore.categoryName);
+
+console.log(productStore.productLists);
+
 </script>
 
 <template>
   <div class="category-box-cards">
-    <h1 v-if="productStore.isLoading == true" class="server-message">
-      <rh-spinner></rh-spinner>
-    </h1>
-    <h1
-      v-if="productStore.isLoading == false && productStore.showError == true"
-      class="server-message"
-    >
-      Sorry,No Data Found!!!
-    </h1>
-    <div class="pfe-l-grid pfe-m-gutters pfe-m-all-4-col">
-      <pfe-card
-        v-if="
-          productStore.isLoading == false && productStore.showError == false
-        "
-        class="category-card"
-        v-for="(product, index) in productStore.productLists"
-        @click="productDetailPage(product.modelName, product.id)"
-      >
+    <div class="pfe-l-bullseye">
+      <div>
+        <h1 v-if="productStore.isLoading" class="server-message">
+          <rh-spinner></rh-spinner>
+        </h1>
+        <h1 v-if="!productStore.isLoading && (productStore.showError || !productStore.productLists.length)" class="server-message">
+          Sorry,No Data Found!!!
+        </h1>
+
+      </div>
+     
+    </div>
+   
+    <div class="pfe-l-grid pfe-m-gutters pfe-m-all-3-col">
+      <pfe-card v-if="!productStore.isLoading && !productStore.showError && productStore.productLists.length
+        " class="category-card" v-for="(product, index) in productStore.productLists"
+        @click="productDetailPage(product.modelName, product.id)">
         <img :src="product.image" alt="image" class="category-card-image" />
         <div slot="pfe-card--footer">
           <h3>{{ product.modelName }}</h3>
@@ -43,6 +47,8 @@ const productDetailPage = (modelName, id) => {
 .category-box-cards {
   margin-top: 2rem;
   width: 100%;
+ 
+ 
 }
 
 .server-message {

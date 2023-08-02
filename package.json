@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@patternfly/pfe-badge": "^1.12.3",
     "@patternfly/pfe-button": "^1.12.3",
     "@patternfly/pfe-card": "^1.12.3",
     "@patternfly/pfe-cta": "^1.12.3",

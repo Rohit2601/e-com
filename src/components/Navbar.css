@@ -1,15 +1,19 @@
 .navbar {
+  margin-top: 1px;
+  margin-left: 2px;
+  margin-right: 2px;
   max-width: 100%;
-  height: 14vh;
+  height: 12vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 12px;
-  border: 1px solid black;
+  
+ 
 }
 
 .navbar-img {
-  height: 80%;
+  height: 130%;
   width: 8%;
   cursor: pointer;
 }
@@ -20,62 +24,104 @@
 }
 
 .navbar-username {
-  width: 4%;
-
-  margin-left: 12px;
+  width: 10%;
+  margin-left: 20px;
   padding-left: 10px;
   font-size: 1rem;
 }
 
 .navbar-searchbox {
-  width: 60%;
+  width: 50%;
   text-align: center;
   margin: auto;
 }
 
 .navbar-searchbox-input {
-  width: 70%;
+  width: 65%;
   height: 2.5rem;
-  border: 1px solid black;
+  border: 1px solid #e00;
   outline: none;
   padding: 12px 16px;
   font-size: 1.2rem;
   border-radius: 1px;
+  margin-left: 15%;
 }
 
 .navbar-searchbox-button {
   font-weight: bold;
-  border: 1px solid #06c;
-  outline: auto;
+  border: 1px solid #e00;
+  outline: none;
+  margin-left: 2%;
+  --pfe-button--BackgroundColor:#e00;
+  --pfe-button--Color:#fff;
+  --pfe-button--BorderColor:#020101;
+  --pfe-button--BackgroundColor--hover:#e00;
+  --pfe-button--BorderRadius:2px;
 }
 
 .navbar-select {
   margin: auto;
-  width: 10%;
+  width: 12%;
   cursor: pointer;
+  margin-right: 3%;
+  color:white;
+
+ 
+}
+.pfe-select{
+  --pfe-select--BorderColor:#e00;
+  --pfe-select--BorderBottomColor:#e00;
+  --pfe-select--BorderBottomColor--hover:#e00;
+  
+  
 }
 
 .pfe-select > select {
   width: 100%;
-  padding: 10px 0;
-  border: 1px solid #06c;
-  outline: none;
+  outline:none;
+  
+ 
+  
   cursor: pointer;
-  padding-left: 8px;
+ 
+  
 }
 
 .pfe-options {
-  font-size: 1rem;
-  padding: 5px;
+  width:100%;
+  font-size:1rem;
+  --pfe-select--BackgroundColor:#fff;
+ 
+
+  
 }
 
+
 .navbar-order {
-  margin: auto;
+  --pfe-button--BackgroundColor:#e00;
+  --pfe-button--Color:#fff;
+  --pfe-button--BorderColor:#020101;
+  --pfe-button--BackgroundColor--hover:#e00;
+  --pfe-button--BorderRadius:2px;
+  margin-right: 2%;
 }
+
 
 .navbar-cart {
   cursor: pointer;
-  margin:auto; 
+  margin: auto; 
+  position:relative; 
+  
+ 
 }
 
+.navbar-cart-icon{
+  --pfe-icon--color:#e00;
+}
 
+.navbar-cart-badge {
+  position: absolute;
+ right:1px;
+ 
+  
+}

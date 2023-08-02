@@ -6,7 +6,12 @@ const store = createStore({
   },
   mutations: {
     addToCart(state, item) {
-      state.cartItems.push(item);
+      const existingItem = state.cartItems.find(cartItem => cartItem.id === item.id);
+      if (existingItem) {
+        existingItem.quantity++;
+      } else {
+        state.cartItems.push({ ...item, quantity: 1 });
+      }
       console.log(state.cartItems);
     },
   },
