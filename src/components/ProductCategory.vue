@@ -5,7 +5,9 @@ import { useProductStore } from "../stores/products.js";
 import router from "../routes";
 const productStore = useProductStore();
 const productDetailPage = (modelName, id) => {
+
   router.push(`/product-details?category=${productStore.categoryName}&product=${modelName}&id=${id}`);
+
 }
 console.log(productStore.productLists);
 console.log(productStore.categoryName);
