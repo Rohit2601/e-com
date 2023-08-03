@@ -43,7 +43,7 @@ const goToCart = () => {
       <h3>Ecommerce Portal</h3>
     </div>
     <div class="navbar-searchbox">
-      <input type="text" placeholder="Search E-commerce.in" class="navbar-searchbox-input" />
+      <input type="text" placeholder="Search Ecommerce.in" class="navbar-searchbox-input" />
       <pfe-button class="navbar-searchbox-button">
         <button>Search</button>
       </pfe-button>
