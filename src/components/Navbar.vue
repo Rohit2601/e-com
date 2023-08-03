@@ -10,11 +10,7 @@ import { useProductStore } from '../stores/products.js';
 // Updated Code for Cart Badge
 import { useCartStore } from "../stores/cart.js";
 const cartStore = useCartStore();
-
-
-
 const productStore = useProductStore();
-
 function checkCategory(category) {
   if (category == '/') {
     router.push('/');
