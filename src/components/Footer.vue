@@ -5,7 +5,7 @@
 
 <div class="footer">
     <div>
-        <img src="../assets/redhat-footer.png" alt="redhat-logo" class="footer-redhat-image"/>
+        <img src="../assets/redhat-sources.jpg" alt="redhat-logo" class="footer-redhat-image"/>
     </div>
 <div class="footer-1">
 <h2>Get to know us</h2>
@@ -34,8 +34,8 @@
 <style scoped>
 .footer{
     width:100%;
-    margin-top:4rem;
-    background-color: rgb(0, 0, 0);
+    margin-top:8rem;
+    background-color: rgba(21,21,21,255);
     display:flex;
     justify-content: center;   
     padding:2rem;
@@ -43,8 +43,8 @@
     
 }
 .footer-redhat-image{
-    height:5rem;
-    width:80%;
+    height:6rem;
+    width:90%;
 }
 .footer-1{
     margin:0 2rem;
@@ -53,12 +53,15 @@
 }
 
 .footer-1 > h2{
+    font-size:1.5rem;
     margin-bottom: 1rem;
    
 }
 
 .footer-1 > h4{
     padding:8px 0;
+    font-size:1rem;
+    cursor:pointer;
 }
 
 @media screen and (max-width: 940px) {
