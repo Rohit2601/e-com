@@ -10,11 +10,7 @@ import { useProductStore } from '../stores/products.js';
 // Updated Code for Cart Badge
 import { useCartStore } from "../stores/cart.js";
 const cartStore = useCartStore();
-
-
-
 const productStore = useProductStore();
-
 function checkCategory(category) {
   if (category == '/') {
     router.push('/');
@@ -36,13 +32,14 @@ const goToCart = () => {
 <template>
   <div class="navbar">
     <div class="navbar-img" @click="homePage">
-      <img src="../assets/redhat-logo.png" alt="E-commerce-Image" class="navbar-img-logo" />
+      <img src="../assets/redhat-sources.jpg" alt="E-commerce-Image" class="navbar-img-logo" /> 
     </div>
-    <div class="navbar-username">
-      <h3>Redhat Ecommerce</h3>
+    <div class="navbar-separator"></div>
+    <div class="navbar-username">      
+      <h3>Ecommerce Portal</h3>
     </div>
     <div class="navbar-searchbox">
-      <input type="text" placeholder="Search E-commerce.in" class="navbar-searchbox-input" />
+      <input type="text" placeholder="Search Ecommerce.in" class="navbar-searchbox-input" />
       <pfe-button class="navbar-searchbox-button">
         <button>Search</button>
       </pfe-button>
@@ -67,7 +64,7 @@ const goToCart = () => {
     <div class="navbar-cart" @click="goToCart">
       <pfe-icon icon="rh-shopping-cart" size="4x" class="navbar-cart-icon">
       </pfe-icon>
-      <pfe-badge v-if="cartStore.cartItemsCount" state="default" aria-label="cart Items" :number="cartStore.cartItemsCount" class="navbar-cart-badge" threshold="10">
+      <pfe-badge v-if="cartStore.cartItemsCount" state="important" aria-label="cart Items" :number="cartStore.cartItemsCount" class="navbar-cart-badge" threshold="10">
       </pfe-badge>      
     </div>
   </div>
